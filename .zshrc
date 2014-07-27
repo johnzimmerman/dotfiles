@@ -55,6 +55,23 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Applications/Postgres.app/Contents/Versions/9.3/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
+# enable virtualenvwrapper if present
+if [ -e /usr/local/bin/virtualenvwrapper.sh ]; then
+    export WORKON_HOME=$HOME/.virtualenvs
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
+
+# virtualenv settings
+# pip should only run if there is a virtualenv currently activated
+export PIP_REQUIRE_VIRTUALENV=true
+
+# tell pip to detect an active virtualenv and install to it
+# without having to pass it the -E parameter.
+export PIP_RESPECT_VIRTUALENV=true
+
+# tell pip to automatically create its virtualenvs in your $WORKON_HOME
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
